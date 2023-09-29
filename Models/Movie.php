@@ -8,7 +8,7 @@
         public $vote;
 
         function __construct(string $_title,
-        string $_genre,
+        Genre $_genre,
         string $_original_language,
         float $_year,
         float $_vote
