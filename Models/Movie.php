@@ -2,19 +2,19 @@
 
     class Movie {
         public $title;
-        public $genre;
+        public $genres;
         public $original_language;
         public $year;
         public $vote;
 
         function __construct(string $_title,
-        Genre $_genre,
+        Genre $_genres,
         string $_original_language,
         float $_year,
         float $_vote
         ){
             $this->title = $_title;
-            $this->genre = $_genre;
+            $this->genres = $_genres;
             $this->original_language = $_original_language;
             $this->year = $_year;
             $this->setVote($_vote);
