@@ -3,7 +3,7 @@
     include_once __DIR__ . "/Models/Movie.php" ;
 
     
-
+    $data = $_GET ?? "";
     
     $lotr = new Movie( "LOTR", new Genre(["Fantasy", "Adventure", "Action"]), "English", "2001", "5") ;
     
@@ -16,6 +16,13 @@
     ];
 
 
+    if(!empty($data)) {
+
+        $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;
+        // $film_list .= $new_card ;
+        array_push($film_list, $new_card);
+        var_dump($new_card);
+    }
     // foreach ($film_list as $film) {
     //     echo "<br>";
     //         echo $film->title . "<br> ";
@@ -58,6 +65,32 @@
 </head>
 
 <body>
+    <div class="container mt-2">
+        <form method="GET">
+            <h1>Film cards generator</h1>
+            <div class="row">
+
+                <input type="text" required placeholder="Insert title of film" class="col form-control col"
+                    name="title">
+                <input type="number" required placeholder="Insert year of film" class="col form-control col"
+                    name="year">
+                <input type="text" required placeholder="Insert original language of film" class="col form-control col"
+                    name="original_language">
+            </div>
+            <div class="row">
+                <input type="number" min=0 max=5 required placeholder="Insert vote of film" class="col form-control col"
+                    name="vote">
+                <input type="text" required placeholder="Insert first genre of film" class="col form-control col"
+                    name="genre_primary">
+                <input type="text" placeholder="Insert second genre of film" class="col form-control col"
+                    name="genre_secondary">
+            </div>
+            <button class="btn btn-outline-primary"> Press to create film card
+
+            </button>
+
+        </form>
+    </div>
     <div class="container m-4 d-flex">
         <?php foreach ($film_list as $film) :?>
         <div class="card m-2" style="width: 18rem;">
