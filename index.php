@@ -5,9 +5,9 @@
     
 
     
-    $lotr = new Movie( "LOTR", new Genre("Fantasy"), "English", "2001", "5") ;
+    $lotr = new Movie( "LOTR", new Genre("Fantasy", "Adventure", "Action"), "English", "2001", "5") ;
     
-    $harry_potter = new Movie("Harry Potter", new Genre("Fantasy"), "English", "2001", "4");
+    $harry_potter = new Movie("Harry Potter", new Genre("Fantasy", "School", "Adventure"), "English", "2001", "4");
     
 
     $film_list = [
