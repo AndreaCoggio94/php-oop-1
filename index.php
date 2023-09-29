@@ -16,12 +16,21 @@
     ];
 
     var_dump($film_list);
-    // foreach ($film_list as $film) {
-    //     echo "<br>";
-    //     foreach ($film as $value){
-    //         echo "$value <br>";
-    //     };
-    // };
+
+    foreach ($film_list as $film) {
+        echo "<br>";
+        foreach ($film as $value){
+            if (is_array($value)){
+                echo "array" ;
+                foreach ($value as $genre){
+                    echo "$genre <br>" ;
+                }
+            } else {
+
+                echo "$value <br>";
+            }
+        };
+    };
 
    
 ?>
