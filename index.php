@@ -1,4 +1,7 @@
 <?php
+
+    session_start() ;
+
     include_once __DIR__ . "/Models/Genre.php" ;
     include_once __DIR__ . "/Models/Movie.php" ;
 
@@ -16,13 +19,17 @@
     ];
 
 
-    if(!empty($data)) {
+    // if(!empty($data)) {
 
-        $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;
-        // $film_list .= $new_card ;
-        array_push($film_list, $new_card);
-        var_dump($new_card);
-    }
+    //     $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;
+        
+    //     array_push($film_list, $new_card);
+        
+    // }
+
+
+
+
     // foreach ($film_list as $film) {
     //     echo "<br>";
     //         echo $film->title . "<br> ";
@@ -65,8 +72,11 @@
 </head>
 
 <body>
-    <div class="container mt-2">
-        <form method="GET">
+    <!-- <div class="container mt-2"> -->
+
+    <!-- first draft of form to generate cards by form input -->
+
+    <!-- <form method="GET">
             <h1>Film cards generator</h1>
             <div class="row">
 
@@ -89,8 +99,8 @@
 
             </button>
 
-        </form>
-    </div>
+        </form> -->
+    <!-- </div> -->
     <div class="container m-4 d-flex">
         <?php foreach ($film_list as $film) :?>
         <div class="card m-2" style="width: 18rem;">
