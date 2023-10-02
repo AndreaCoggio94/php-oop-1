@@ -4,6 +4,8 @@
 
     include_once __DIR__ . "/Models/Genre.php" ;
     include_once __DIR__ . "/Models/Movie.php" ;
+    include_once __DIR__ . "/Models/TvSerie.php" ;
+    include_once __DIR__ . "/Models/Production.php" ;
 
     
     $data = $_GET ?? "";
