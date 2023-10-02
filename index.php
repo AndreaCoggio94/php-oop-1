@@ -20,7 +20,8 @@
         $harry_potter,
     ];
 
-
+    $test = new TvSerie("titolo", new Genre(["genere","genere"]), "lingua", "1994", "4.2", "20", "1995", "2000", "30", "2");
+    var_dump($test);
     // if(!empty($data)) {
 
     //     $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;

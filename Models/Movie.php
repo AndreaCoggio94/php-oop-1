@@ -8,12 +8,13 @@
         public $vote;
         public $running_time;
 
-        function __construct(string $_title,
+        public function __construct(
+        string $_title,
         Genre $_genres,
         string $_original_language,
         int $_published_year,
         float $_vote,
-        float $_running_time
+        int $_running_time
         ){
             $this->title = $_title;
             $this->genres = $_genres;
