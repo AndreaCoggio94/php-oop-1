@@ -26,13 +26,40 @@ class TvSerie extends Movie {
 
     ){
         parent::__construct($_title, $_genres, $_original_language, $_published_year, $_vote, $_running_time);
-        $this->aired_from_year = $_aired_from_year;
-        $this->aired_to_year = $_aired_to_year;
-        $this->number_of_episodes = $_number_of_episodes;
-        $this->number_of_seasons = $_number_of_seasons;
+        $this->setAiredFromYear($_aired_from_year);
+        $this->setAiredToYear($_aired_to_year);
+        $this->setNumberOfEpisodes($_number_of_episodes);
+        $this->setNumberOfSeasons($_number_of_seasons);
 
 
     }
 
+    public function setAiredFromYear($_aired_from_year){
+        if(empty($_aired_from_year)){
+            return "";
+        }
+        $this->aired_from_year = $_aired_from_year;
+    }
+
+    public function setAiredToYear($_aired_to_year){
+        if(empty($_aired_to_year)){
+            return "";
+        }
+        $this->aired_to_year = $_aired_to_year;
+    }
+
+    public function setNumberOfEpisodes($_number_of_episodes){
+        if(empty($_number_of_episodes)){
+            return "";
+        }
+        $this->number_of_episodes = $_number_of_episodes;
+    }
+
+    public function setNumberOfSeasons($_number_of_seasons){
+        if(empty($_number_of_seasons)){
+            return "";
+        }
+        $this->number_of_seasons = $_number_of_seasons;
+    }
 }
 ?>

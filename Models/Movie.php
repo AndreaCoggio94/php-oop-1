@@ -16,15 +16,18 @@
         float $_vote,
         int $_running_time
         ){
-            $this->title = $_title;
-            $this->genres = $_genres;
-            $this->original_language = $_original_language;
-            $this->published_year = $_published_year;
+            $this->setTitle($_title);
+            $this->setGenres($_genres);
+            $this->setOriginalLanguage($_original_language);
+            $this->setPublishedYear($_published_year);
             $this->setVote($_vote);
-            $this->running_time = $_running_time;
+            $this->setRunningTime($_running_time);
         }
         public function setVote($vote){
-            if ($vote <= 2) {
+            if(empty($vote)){
+                $this->vote = "";
+            }
+            elseif ($vote <= 2) {
                 $this->vote = "low";
             } elseif ($vote <= 4 ) {
                 $this->vote = "average";
@@ -33,4 +36,38 @@
             }
         } 
 
+        public function setTitle($_title){
+            if(empty($_title)){
+                return "";
+            }
+            $this->title = $_title;
+        }
+
+        public function setGenres($_genres){
+            if(empty($_genres)){
+                return "";
+            }
+            $this->genres = $_genres;
+        }
+
+        public function setOriginalLanguage($_original_language){
+            if(empty($_original_language)){
+                return "";
+            }
+            $this->original_language = $_original_language;
+        }
+
+        public function setPublishedYear($_published_year){
+            if(empty($_published_year)){
+                return "";
+            }
+            $this->published_year = $_published_year;
+        }
+
+        public function setRunningTime($_running_time){
+            if(empty($_running_time)){
+                return "";
+            }
+            $this->running_time = $_running_time;
+        }
     }
