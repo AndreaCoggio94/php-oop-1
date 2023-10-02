@@ -6,22 +6,19 @@
     include_once __DIR__ . "/Models/Movie.php" ;
     include_once __DIR__ . "/Models/TvSerie.php" ;
     include_once __DIR__ . "/Models/Production.php" ;
+    include __DIR__ . "/data/db.php" ;
 
     
     $data = $_GET ?? "";
     
-    $lotr = new Movie( "LOTR", new Genre(["Fantasy", "Adventure", "Action"]), "English", "2001", "5", "120") ;
-    
-    $harry_potter = new Movie("Harry Potter", new Genre(["Fantasy", "School"]), "English", "2001", "4", "120");
     
 
     $film_list = [
-        $lotr,
-        $harry_potter,
+        
     ];
 
-    $test = new TvSerie("titolo", new Genre(["genere","genere"]), "lingua", "1994", "4.2", "20", "1995", "2000", "30", "2");
-    var_dump($test);
+    // $test = new TvSerie("titolo", new Genre(["genere","genere"]), "lingua", "1994", "4.2", "20", "1995", "2000", "30", "2");
+    // var_dump($test);
     // if(!empty($data)) {
 
     //     $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;
@@ -33,16 +30,21 @@
 
 
 
-    // foreach ($film_list as $film) {
-    //     echo "<br>";
-    //         echo $film->title . "<br> ";
-    //         echo $film->original_language . "<br> ";
-    //         echo $film->year . "<br> ";
-    //         echo $film->vote . "<br> ";
-    //         foreach ($film->genres->genres as $genre){
-    //             echo $genre . " <br>" ;
-    //             }
-    // };
+    foreach ($production_list as $product) {
+
+        $film_list[] = new Production ($product["title"], new Genre ($product["genres"]), $product["original_language"], $product["published_year"], $product["vote"], $product["running_time"], $product["aired_from_year"], $product["aired_to_year"], $product["number_of_episodes"], $product["number_of_seasons"]) ;
+
+
+
+        // echo "<br>";
+        //     echo $product->title . "<br> ";
+        //     echo $product->original_language . "<br> ";
+        //     echo $product->year . "<br> ";
+        //     echo $product->vote . "<br> ";
+        //     foreach ($product->genres->genres as $genre){
+        //         echo $genre . " <br>" ;
+        //         }
+    };
 
    
 ?>
@@ -119,6 +121,14 @@
                     <?php echo $film->running_time . "<br> " ; ?>
 
                     <?php echo $film->vote . "<br> " ; ?>
+
+                    <?php echo $film->aired_from_year . "<br> " ; ?>
+
+                    <?php echo $film->aired_to_year . "<br> " ; ?>
+
+                    <?php echo $film->number_of_episodes . "<br> " ; ?>
+
+                    <?php echo $film->number_of_seasons . "<br> " ; ?>
                 </p>
                 <p>
                     <?php foreach ($film->genres->genres as $genre): ?>
