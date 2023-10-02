@@ -8,9 +8,9 @@
     
     $data = $_GET ?? "";
     
-    $lotr = new Movie( "LOTR", new Genre(["Fantasy", "Adventure", "Action"]), "English", "2001", "5") ;
+    $lotr = new Movie( "LOTR", new Genre(["Fantasy", "Adventure", "Action"]), "English", "2001", "5", "120") ;
     
-    $harry_potter = new Movie("Harry Potter", new Genre(["Fantasy", "School"]), "English", "2001", "4");
+    $harry_potter = new Movie("Harry Potter", new Genre(["Fantasy", "School"]), "English", "2001", "4", "120");
     
 
     $film_list = [
@@ -72,11 +72,9 @@
 </head>
 
 <body>
-    <!-- <div class="container mt-2"> -->
-
     <!-- first draft of form to generate cards by form input -->
-
-    <!-- <form method="GET">
+    <!-- <div class="container mt-2">
+    <form method="GET">
             <h1>Film cards generator</h1>
             <div class="row">
 
@@ -96,11 +94,12 @@
                     name="genre_secondary">
             </div>
             <button class="btn btn-outline-primary"> Press to create film card
-
             </button>
+        </form>
+    </div> -->
 
-        </form> -->
-    <!-- </div> -->
+    <!-- Cards container -->
+
     <div class="container m-4 d-flex">
         <?php foreach ($film_list as $film) :?>
         <div class="card m-2" style="width: 18rem;">
@@ -112,7 +111,9 @@
                 <p class="card-text">
                     <?php echo $film->original_language . "<br> " ; ?>
 
-                    <?php echo $film->year . "<br> " ; ?>
+                    <?php echo $film->published_year . "<br> " ; ?>
+
+                    <?php echo $film->running_time . "<br> " ; ?>
 
                     <?php echo $film->vote . "<br> " ; ?>
                 </p>
