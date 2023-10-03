@@ -1,12 +1,14 @@
 <?php
 
-class TvSerie extends Movie {
+class TvSerie extends Production {
 
     
    public $aired_from_year ;
    public $aired_to_year ;
    public $number_of_episodes ;
    public $number_of_seasons ;
+
+   
 
 
     public function __construct(
@@ -15,9 +17,9 @@ class TvSerie extends Movie {
         string $_title,
         Genre $_genres,
         string $_original_language,
-        int $_published_year,
+        
         float $_vote,
-        int $_running_time,
+        
         // TvSerie
         int $_aired_from_year,
         int $_aired_to_year ,
@@ -25,12 +27,12 @@ class TvSerie extends Movie {
         int $_number_of_seasons 
 
     ){
-        parent::__construct($_title, $_genres, $_original_language, $_published_year, $_vote, $_running_time);
+        parent::__construct($_title, $_genres, $_original_language, $_vote) ;
         $this->setAiredFromYear($_aired_from_year);
         $this->setAiredToYear($_aired_to_year);
         $this->setNumberOfEpisodes($_number_of_episodes);
         $this->setNumberOfSeasons($_number_of_seasons);
-
+        
 
     }
 

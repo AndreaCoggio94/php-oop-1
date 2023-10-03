@@ -1,29 +1,64 @@
 <?php
 
- class Production extends TvSerie {
+ class Production {
+
+    public $title;
+    public $genres;
+    public $original_language;
+    public $vote;
+
 
     // public $in_production ;
 
     public function __construct(
-        // Movie
+        // Production
         string $_title,
         Genre $_genres,
         string $_original_language,
-        int $_published_year,
         float $_vote,
-        int $_running_time,
-        // TvSerie
-        int $_aired_from_year,
-        int $_aired_to_year ,
-        int $_number_of_episodes ,
-        int $_number_of_seasons ,
-        // Production
-        
-
         ) {
-            parent::__construct($_title, $_genres, $_original_language, $_published_year, $_vote, $_running_time, $_aired_from_year, $_aired_to_year, $_number_of_episodes, $_number_of_seasons) ;
             
+            
+            $this->setTitle($_title);
+            $this->setGenres($_genres);
+            $this->setOriginalLanguage($_original_language);   
+            $this->setVote($_vote);
+
         }
+
+        public function setTitle($_title){
+            if(empty($_title)){
+                return "";
+            }
+            $this->title = $_title;
+        }
+
+        public function setGenres($_genres){
+            if(empty($_genres)){
+                return "";
+            }
+            $this->genres = $_genres;
+        }
+
+        public function setOriginalLanguage($_original_language){
+            if(empty($_original_language)){
+                return "";
+            }
+            $this->original_language = $_original_language;
+        }
+
+        public function setVote($vote){
+            if(empty($vote)){
+                $this->vote = "";
+            }
+            elseif ($vote <= 2) {
+                $this->vote = "low";
+            } elseif ($vote <= 4 ) {
+                $this->vote = "average";
+            } else {
+                $this->vote = "masterpiece";
+            }
+        } 
  }
 
 ?>

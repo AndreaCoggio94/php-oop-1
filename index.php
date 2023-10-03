@@ -3,9 +3,9 @@
     session_start() ;
 
     include_once __DIR__ . "/Models/Genre.php" ;
+    include_once __DIR__ . "/Models/Production.php" ;
     include_once __DIR__ . "/Models/Movie.php" ;
     include_once __DIR__ . "/Models/TvSerie.php" ;
-    include_once __DIR__ . "/Models/Production.php" ;
     include __DIR__ . "/data/db.php" ;
 
     
@@ -28,13 +28,19 @@
     // }
 
 
+    
 
 
     foreach ($production_list as $product) {
+        // var_dump($product) ;
+        if(isset($product["published_year"])) {
 
-        $film_list[] = new Production ($product["title"], new Genre ($product["genres"]), $product["original_language"], $product["published_year"], $product["vote"], $product["running_time"], $product["aired_from_year"], $product["aired_to_year"], $product["number_of_episodes"], $product["number_of_seasons"]) ;
+            $film_list[] = new Movie ($product["title"], new Genre ($product["genres"]), $product["original_language"], $product["published_year"], $product["vote"], $product["running_time"]) ;
+        } else {
 
-
+            $film_list[] = new TvSerie ($product["title"], new Genre ($product["genres"]), $product["original_language"], $product["vote"], $product["aired_from_year"], $product["aired_to_year"], $product["number_of_episodes"], $product["number_of_seasons"]) ;
+            
+        }
 
         // echo "<br>";
         //     echo $product->title . "<br> ";
@@ -45,7 +51,7 @@
         //         echo $genre . " <br>" ;
         //         }
     };
-
+    
    
 ?>
 
@@ -107,6 +113,7 @@
 
     <div class="container m-4 d-flex">
         <?php foreach ($film_list as $film) :?>
+        <?php if(isset($film->published_year)): ?>
         <div class="card m-2" style="width: 18rem;">
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body text-center">
@@ -122,14 +129,10 @@
 
                     <?php echo $film->vote . "<br> " ; ?>
 
-                    <?php echo $film->aired_from_year . "<br> " ; ?>
 
-                    <?php echo $film->aired_to_year . "<br> " ; ?>
-
-                    <?php echo $film->number_of_episodes . "<br> " ; ?>
-
-                    <?php echo $film->number_of_seasons . "<br> " ; ?>
                 </p>
+
+
                 <p>
                     <?php foreach ($film->genres->genres as $genre): ?>
                     <?php echo $genre . " " ; ?>
@@ -137,6 +140,38 @@
                 </p>
             </div>
         </div>
+        <?php else : ?>
+        <div class="card m-2" style="width: 18rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body text-center">
+                <h5 class="card-title">
+                    <?php echo $film->title ; ?>
+                </h5>
+                <p class="card-text">
+                    <?php echo $film->original_language . "<br> " ; ?>
+
+                    <?php echo $film->aired_from_year . "<br> " ; ?>
+
+                    <?php echo $film->aired_to_year . "<br> " ; ?>
+
+                    <?php echo $film->number_of_episodes . "<br> " ; ?>
+
+                    <?php echo $film->number_of_seasons . "<br> " ; ?>
+
+                    <?php echo $film->vote . "<br> " ; ?>
+
+
+                </p>
+
+
+                <p>
+                    <?php foreach ($film->genres->genres as $genre): ?>
+                    <?php echo $genre . " " ; ?>
+                    <?php endforeach ?>
+                </p>
+            </div>
+        </div>
+        <?php endif ?>
         <?php endforeach ?>
     </div>
 </body>
