@@ -9,28 +9,9 @@
     include __DIR__ . "/data/db.php" ;
 
     
-    $data = $_GET ?? "";
-    
-    
+    // $data = $_GET ?? "";
 
-    $film_list = [
-        
-    ];
-
-    // $test = new TvSerie("titolo", new Genre(["genere","genere"]), "lingua", "1994", "4.2", "20", "1995", "2000", "30", "2");
-    // var_dump($test);
-    // if(!empty($data)) {
-
-    //     $new_card = new Movie( $_GET["title"], new Genre([$_GET["genre_primary"], $_GET["genre_secondary"]]), $_GET["original_language"], $_GET["year"], $_GET["vote"]) ;
-        
-    //     array_push($film_list, $new_card);
-        
-    // }
-
-
-    
-
-
+    $film_list = [ ];
     foreach ($production_list as $product) {
         // var_dump($product) ;
         if(isset($product["published_year"])) {
@@ -42,14 +23,7 @@
             
         }
 
-        // echo "<br>";
-        //     echo $product->title . "<br> ";
-        //     echo $product->original_language . "<br> ";
-        //     echo $product->year . "<br> ";
-        //     echo $product->vote . "<br> ";
-        //     foreach ($product->genres->genres as $genre){
-        //         echo $genre . " <br>" ;
-        //         }
+        
     };
     
    
